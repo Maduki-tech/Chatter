@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  nextjs-app:
+    build:
+      context: ./clientChatter
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./clientChatter
+          target: /frontend/
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+          ignore:
+            - node_modules/
+    ports:
+      - "3000:3000"
+
+  spring-app:
+    build:
+      context: ./ChatterServer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
