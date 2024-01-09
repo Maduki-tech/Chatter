@@ -13,7 +13,7 @@ services:
           ignore:
             - node_modules/
         - action: rebuild
-          path: package.json
+          path: ./clientChatter/package.json
           ignore:
             - node_modules/
     ports:
@@ -23,5 +23,14 @@ services:
     build:
       context: ./ChatterServer
       dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./ChatterServer
+          target: /backend/
+          ignore:
+            - target/
+        - action: rebuild
+          path: ./ChatterServer/src/main/java/de/schlueter/
     ports:
       - "8080:8080"

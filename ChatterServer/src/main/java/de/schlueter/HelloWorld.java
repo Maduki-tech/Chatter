@@ -10,7 +10,7 @@ public class HelloWorld {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/")
     ResponseEntity<String> helloWorld() {
-        String json = "{\"message\": \"Hello World!\"}";
+        String json = "{\"message\": \"Hello David!\"}";
         return new ResponseEntity<>(json, null, 200);
 
     }

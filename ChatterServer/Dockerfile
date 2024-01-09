@@ -1,6 +1,6 @@
 FROM maven
-RUN mkdir /app
-WORKDIR /app
-COPY . /app
+RUN mkdir /backend
+WORKDIR /backend
+COPY . /backend
 RUN mvn clean install
 CMD "./run"
